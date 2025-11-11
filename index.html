@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram Media Downloader</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 600px;
+            width: 100%;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 2em;
+        }
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.2s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        .btn:active {
+            transform: translateY(0);
+        }
+        .features {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid #e0e0e0;
+        }
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: #666;
+        }
+        .feature-item::before {
+            content: "✓";
+            color: #667eea;
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 20px;
+        }
+        .info-box {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📥 Telegram Media Downloader</h1>
+        <p class="subtitle">Download videos, images, and files from Telegram</p>
+        
+        <div class="input-group">
+            <input type="text" id="telegramUrl" placeholder="Paste Telegram URL here (e.g., t.me/...)">
+        </div>
+        
+        <button class="btn" onclick="downloadMedia()">Download Media</button>
+        
+        <div class="features">
+            <div class="feature-item">Download photos and videos</div>
+            <div class="feature-item">Support for public channels</div>
+            <div class="feature-item">Fast and secure downloads</div>
+            <div class="feature-item">No registration required</div>
+        </div>
+        
+        <div class="info-box">
+            <strong>How to use:</strong><br>
+            1. Open Telegram and find the media you want to download<br>
+            2. Copy the link to the post (Right-click > Copy Link)<br>
+            3. Paste the link above and click Download Media<br>
+            <br>
+            <strong>Note:</strong> This tool works best with public Telegram channels and groups.
+        </div>
+    </div>
+    
+    <script>
+        function downloadMedia() {
+            const url = document.getElementById('telegramUrl').value.trim();
+            
+            if (!url) {
+                alert('Please enter a Telegram URL');
+                return;
+            }
+            
+            if (!url.includes('t.me') && !url.includes('telegram')) {
+                alert('Please enter a valid Telegram URL');
+                return;
+            }
+            
+            // Redirect to TeleGrabber with the URL
+            window.open('https://telegrabber.com/', '_blank');
+            alert('Opening download service. Please paste your URL there to download.');
+        }
+        
+        // Allow Enter key to submit
+        document.getElementById('telegramUrl').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                downloadMedia();
+            }
+        });
+    </script>
+</body>
+</html>
